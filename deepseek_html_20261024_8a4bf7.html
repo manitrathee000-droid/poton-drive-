@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proton Drive – Secure Cloud Storage</title>
+  <!-- Google Font + simple reset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f7f9fc;
+      color: #1a2b3c;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Banner placeholder – using <img> tag as required */
+    .banner {
+      width: 100%;
+      background: linear-gradient(145deg, #e0e9f5 0%, #cbd9eb 100%);
+      border-radius: 28px;
+      overflow: hidden;
+      margin: 24px 0 20px;
+      box-shadow: 0 12px 30px rgba(0, 20, 30, 0.08);
+    }
+    .banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1200 / 300;
+      object-fit: cover;
+      /* visually acts as placeholder with subtle graphic fallback */
+      background: #d0dfee;
+      color: #2c4b6e;
+      font-size: 1.2rem;
+      text-align: center;
+      line-height: 300px; /* for alt text if image fails */
+    }
+    /* hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      margin: 30px 0 40px;
+    }
+    .hero-content {
+      flex: 1 1 400px;
+    }
+    .badge {
+      display: inline-block;
+      background: #e4eefb;
+      color: #0b4f8a;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      padding: 6px 14px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      border: 1px solid #b8d1e8;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #0c2e4a;
+      margin-bottom: 18px;
+    }
+    .highlight {
+      background: linear-gradient(120deg, #f9eec1 0%, #f9eec1 40%, transparent 80%);
+      background-repeat: no-repeat;
+      background-size: 100% 40%;
+      background-position: 0 80%;
+      padding: 0 4px;
+    }
+    .subhead {
+      font-size: 1.2rem;
+      color: #2e4a66;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+    .discount-pill {
+      display: inline-block;
+      background: #003d66;
+      color: white;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 10px 26px;
+      border-radius: 60px;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 16px rgba(0, 61, 102, 0.15);
+    }
+    .discount-pill span {
+      background: #ffb347;
+      color: #00263b;
+      padding: 3px 12px;
+      border-radius: 40px;
+      margin-left: 8px;
+      font-weight: 800;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #003d66;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 16px 40px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 24px -8px rgba(0, 61, 102, 0.35);
+      gap: 10px;
+    }
+    .cta-btn:hover {
+      background: #002a47;
+      box-shadow: 0 16px 28px -8px rgba(0, 42, 71, 0.5);
+      transform: scale(1.02);
+    }
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    /* features */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin: 50px 0 60px;
+    }
+    .feature-card {
+      flex: 1 1 280px;
+      background: white;
+      padding: 28px 24px;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0, 20, 40, 0.04);
+      border: 1px solid #e7edf5;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 18px 36px -8px rgba(0, 35, 70, 0.1);
+      transform: translateY(-3px);
+      border-color: #cddef0;
+    }
+    .feature-icon {
+      background: #e1edfc;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #003d66;
+    }
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0b2b44;
+    }
+    .feature-card p {
+      color: #3c5d7a;
+      font-size: 0.98rem;
+    }
+    /* trust line */
+    .trust-note {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: #ffffffd9;
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 14px 32px;
+      margin: 30px auto 10px;
+      width: fit-content;
+      border: 1px solid #dfe9f2;
+      font-size: 0.95rem;
+      color: #1f405e;
+      font-weight: 500;
+    }
+    .trust-note span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-note svg {
+      width: 18px;
+      height: 18px;
+      fill: #0066a1;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 0 30px;
+      color: #52718b;
+      font-size: 0.85rem;
+      border-top: 1px solid #d7e3ef;
+      margin-top: 30px;
+    }
+    /* responsive adjustments */
+    @media (max-width: 640px) {
+      .hero {
+        gap: 24px;
+      }
+      .cta-btn {
+        width: 100%;
+      }
+      .trust-note {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        border-radius: 24px;
+        width: 100%;
+        padding: 18px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- BANNER PLACEHOLDER using <img> tag (requirement) -->
+    <div class="banner">
+      <img 
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='300' viewBox='0 0 1200 300'%3E%3Crect width='1200' height='300' fill='%23cbd9eb'/%3E%3Ctext x='600' y='150' font-family='Inter, sans-serif' font-size='32' font-weight='600' fill='%23345a7c' text-anchor='middle' dominant-baseline='middle'%3E🔒 Proton Drive – Secure cloud banner%3C/text%3E%3Ctext x='600' y='210' font-family='Inter, sans-serif' font-size='18' fill='%232c4b6e' text-anchor='middle' dominant-baseline='middle'%3EEnd-to-end encrypted · Swiss privacy%3C/text%3E%3C/svg%3E"
+        alt="Proton Drive secure cloud storage banner – end-to-end encrypted, Swiss-based privacy"
+        width="1200"
+        height="300"
+      >
+    </div>
+
+    <!-- Hero + CTA -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="badge">⚡ LIMITED TIME OFFER</div>
+        <h1>
+          <span class="highlight">End-to-end encrypted</span> cloud storage,<br>
+          built on Swiss privacy.
+        </h1>
+        <p class="subhead">
+          Store, share and back up your files with zero-knowledge encryption. 
+          Your data stays private — not even Proton can see it.
+        </p>
+
+        <!-- 40% discount offer -->
+        <div class="discount-pill">
+          🎉 Save 40% <span>on annual plans</span>
+        </div>
+
+        <!-- CTA button opens in new tab (target="_blank"), updated URL -->
+        <a 
+          href="https://afflat3d3.com/trk/lnk/D9257A2B-E2D8-4B3D-8DCB-10852C2F0AD1/?o=33401&c=918277&a=801151&k=9F2536E3A7AE5CC0431BB98EFA126E2A&l=39626" 
+          class="cta-btn" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Claim 40% discount
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Feature cards: e2e encryption + swiss privacy + more -->
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path d="M12 2C9.243 2 7 4.243 7 7v3H5v12h14V10h-2V7c0-2.757-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3v3H9V7c0-1.654 1.346-3 3-3zm0 12c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/>
+          </svg>
+        </div>
+        <h3>End-to-end encryption</h3>
+        <p>All files are encrypted on your device before they reach our servers. Zero-knowledge proof means only you hold the keys.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <h3>Swiss-based privacy</h3>
+        <p>Protected by Swiss privacy laws and neutrality. Our datacenters are located in Switzerland, outside US and EU jurisdiction.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 9h10v2H7zm0 4h7v2H7z"/>
+          </svg>
+        </div>
+        <h3>Secure file sharing</h3>
+        <p>Share files with password protection and expiring links. Full control over who sees what — all encrypted.</p>
+      </div>
+    </div>
+
+    <!-- Extra trust / privacy reassurance -->
+    <div class="trust-note">
+      <span>
+        <svg viewBox="0 0 24 24">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
+        Swiss privacy
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24">
+          <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+        </svg>
+        Zero-access encryption
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        40% off annual plans
+      </span>
+    </div>
+
+    <footer>
+      Proton Drive — End-to-end encrypted cloud storage. Swiss-based, privacy by design.
+    </footer>
+  </div>
+</body>
+</html>
